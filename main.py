@@ -8,10 +8,12 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/login/")
+@app.route("/login/", methods=["POST"])
 def login():
-    name = request.args.get('name', type=str)
-    password = request.args.get('password', type=str)
+    name = request.form['name']
+    # name = request.args.get('name', type=str)
+    password = request.form['password']
+    # password = request.args.get('password', type=str)
     print(name, password)
     return render_template("login.html", name=name, password=password)
 
